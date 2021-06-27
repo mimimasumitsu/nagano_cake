@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get 'orders/tahks' => 'orders#thanks'
   resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
-  namespace :admin do
+  namespace :admins do
     resources :sessions, only: [:new, :create, :destroy]
     get 'admin' => 'admin/homes#top'
     resources :items, except: [:destroy]

@@ -3,4 +3,13 @@ class Item < ApplicationRecord
   has_many :order_items, dependent: :destroy
   belongs_to :genre
   attachment :image
+
+  enum status: {
+    販売中: true,
+    販売停止中: false
+  }
+
+  def add_tax_price
+    price * 1.1
+  end
 end

@@ -13,16 +13,21 @@
     <%= f.text_area :introduction %>
   </div>
   <div>
-    <%#= f.label :genre_id, 'ジャンル' %>
-    <%#= f.select :genre_id %>
+    <%= f.label :genre, 'ジャンル' %>
+    <%= f.collection_select :genre, Genre.all, :id, :name %>
   </div>
   <div>
     <%= f.label :price, '税抜価格' %>
     <%= f.text_field :price %><span>円</span>
   </div>
   <div>
-    <%= f.label :status, '販売ステータス' %>
-    <%#= f.radio_button :status,  %>
+    <%= f.label :is_active, '販売ステータス' %>
+    <label>
+      <%= f.radio_button :is_active, :true %>販売中
+    </label>
+    <label>
+      <%= f.radio_button :is_active, :false %>販売停止中
+    </label>
   </div>
   <div>
     <%= f.submit '変更を保存' %>

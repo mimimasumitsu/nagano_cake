@@ -1,4 +1,7 @@
 <h2>商品一覧</h2>
+<%= link_to new_admin_item_path do %>
+  <i class="far fa-plus-square"></i>
+<% end %>
 <table>
   <thead>
     <tr>
@@ -15,11 +18,9 @@
         <td><%= item.id %></td>
         <td><%= item.name %></td>
         <td><%= item.price %></td>
-        <td><%#= genre.name %></td>
+        <td><%= item.genre.name %></td>
         <td><%= item.is_active %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<%# ページネーション %>

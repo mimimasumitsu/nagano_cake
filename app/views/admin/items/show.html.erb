@@ -1,4 +1,5 @@
 <h2>商品詳細</h2>
+<%= attachment_image_tag @item, :image %>
 <table>
   <tr>
     <th>商品名</th>
@@ -10,15 +11,15 @@
   </tr>
   <tr>
     <th>ジャンル</th>
-    <td><%#= @item.genre %></td>
+    <td><%= @item.genre.name %></td>
   </tr>
   <tr>
     <th>税込価格(税抜価格)</th>
-    <td><%= @item.price %><%= @item.add_tax_price %><span>円</span></td>
+    <td><%= @item.add_tax_price.to_s(:delimited) %>(<%= @item.price %>)円</td>
   </tr>
   <tr>
     <th>販売ステータス</th>
-    <td><%= @item.status %></td>
+    <td><%= @item.is_active %></td>
   </tr>
 </table>
 <%= link_to '編集する', edit_admin_item_path(@item.id) %>

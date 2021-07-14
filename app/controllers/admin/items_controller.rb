@@ -2,6 +2,12 @@ class Admin::ItemsController < ApplicationController
 
   def index
     @items = Item.all
+    status = :is_active
+    if status == true
+      puts "販売中"
+    else
+      puts "販売停止中"
+    end
   end
 
   def new

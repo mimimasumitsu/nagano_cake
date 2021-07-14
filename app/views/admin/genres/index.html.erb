@@ -1,5 +1,5 @@
 <h2>ジャンル一覧・追加</h2>
-<%= form_with model: @genre, url: admin_genres_path, local: true do |f| %>
+<%= form_with model: [:admin, @genre], url: admin_genres_path, local: true do |f| %>
   <div>
     <%= f.label :name, 'ジャンル' %>
     <%= f.text_field :name %>

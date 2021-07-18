@@ -18,6 +18,7 @@ class CustomersController < ApplicationController
   end
 
   def confirm
+    @customer = Customer.find(params[:id])
   end
 
   def cancel

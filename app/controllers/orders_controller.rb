@@ -13,9 +13,11 @@ class OrdersController < ApplicationController
   end
 
   def index
+    @ordres = Order.all
   end
 
   def show
+    @order = Order.find(params[:id])
   end
 
 end

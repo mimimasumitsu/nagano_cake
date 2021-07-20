@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @ordres = Order.all
+    @orders = Order.all
   end
 
   def show

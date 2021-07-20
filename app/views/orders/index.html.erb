@@ -9,11 +9,17 @@
     <th>注文詳細</th>
   </tr>
   <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <% @orders.each do |order| %>
+      <td><%= order.created_at %></td>
+      <td>
+        <%= order.postal_code %>
+        <%= order.address %>
+        <%= order.name %>
+      </td>
+      <td><%#= item %></td>
+      <td><%= order.total_payment %></td>
+      <td><%= order.status %></td>
+      <td><%= link_to '表示する', orders_confirm_path(order) %></td>
+    <% end %>
   </tr>
 </table>

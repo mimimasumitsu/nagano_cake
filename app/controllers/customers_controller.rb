@@ -22,6 +22,10 @@ class CustomersController < ApplicationController
   end
 
   def cancel
+    @customer = Customer.find(params[:id])
+    @customer.update(is_active: false)
+    reset_session
+    redirect_to root_path
   end
 
   private

@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
 
   def new
+    @orders = Order.all
+    @order = Order.new
   end
 
   def confirm
@@ -10,6 +12,8 @@ class OrdersController < ApplicationController
   end
 
   def create
+    @order = Order.new(order_params)
+    @order.save
   end
 
   def index
@@ -18,6 +22,12 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+  end
+
+  private
+
+  def order_params
+    params.require(:order).permit(:postal_code, :address, :name)
   end
 
 end

@@ -49,6 +49,6 @@
       <td></td>
       <td><%= @order.order_items.price %>(<%= @order.order_items.price %>)</td>
       <td><%= @order.order_items.amount %></td>
-      <td></td>
+      <td><%= @order.order_items.price * @order.order_items.amount %></td>
     </tr>
   </table>

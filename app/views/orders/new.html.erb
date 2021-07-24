@@ -1,0 +1,13 @@
+<h2>注文情報入力</h2>
+<%= form_with model: @order, local: true do |f| %>
+  <div>
+    <%= f.label :payment_method, '支払方法'%>
+    <label>
+      <%= f.radio_button :payment_method, Order.payment_method.keys.to_a, {} %>
+    </label>
+  </div>
+  <div>
+    <%#= f.label 'お届け先'%>
+  </div>
+  <%= f.submit '確認画面へ進む' %>
+<% end %>

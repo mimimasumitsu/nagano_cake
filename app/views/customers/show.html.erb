@@ -1,39 +1,45 @@
-<h2>マイページ</h2>
-<div>
-  登録情報
-  <%= link_to '編集する', customers_edit_path %>
-</div>
-<table>
-  <tr>
-    <th>氏名</th>
-    <td><%= @customer.first_name %> <%= @customer.last_name %></td>
-  </tr>
-  <tr>
-    <th>カナ</th>
-    <td><%= @customer.first_name_kana %> <%= @customer.last_name_kana %></td>
-  </tr>
-  <tr>
-    <th>郵便番号</th>
-    <td><%= @customer.postal_code %></td>
-  </tr>
-  <tr>
-    <th>住所</th>
-    <td><%= @customer.address %></td>
-  </tr>
-  <tr>
-    <th>電話番号</th>
-    <td><%= @customer.telephone_number %></td>
-  </tr>
-  <tr>
-    <th>メールアドレス</th>
-    <td><%= @customer.email %></td>
-  </tr>
-</table>
-<div>
-  配送先
-  <%= link_to '一覧を見る', addresses_path(@customer) %>
-</div>
-<div>
-  注文履歴
-  <%= link_to '一覧を見る', orders_path(@customer) %>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <h4 class="mb-4 text-center bg-light w-75">マイページ</h4>
+    </div>
+  </div>
+  <dl class="row">
+    <dt class="col-1">登録情報</dt>
+    <dd class="col-2"><%= link_to '編集する', edit_customers_path, class: 'btn btn-success btn-sm' %></dd>
+  </dl>
+  <table class="table table-bordered">
+    <tr>
+      <th class="table-active col-3">氏名</th>
+      <td class="col-9"><%= @customer.first_name %> <%= @customer.last_name %></td>
+    </tr>
+    <tr>
+      <th class="table-active col-3">カナ</th>
+      <td class="col-9"><%= @customer.first_name_kana %> <%= @customer.last_name_kana %></td>
+    </tr>
+    <tr>
+      <th class="table-active col-3">郵便番号</th>
+      <td class="col-9"><%= @customer.postal_code %></td>
+    </tr>
+    <tr>
+      <th class="table-active col-3">住所</th>
+      <td class="col-9"><%= @customer.address %></td>
+    </tr>
+    <tr>
+      <th class="table-active col-3">電話番号</th>
+      <td class="col-9"><%= @customer.telephone_number %></td>
+    </tr>
+    <tr>
+      <th class="table-active col-3">メールアドレス</th>
+      <td class="col-9"><%= @customer.email %></td>
+    </tr>
+  </table>
+  <dl class="row">
+    <dt class="col-1">配送先</dt>
+    <dd class="col-2"><%= link_to '一覧を見る', addresses_path(@customer), class: 'btn btn-primary btn-sm' %></dd>
+  </dl>
+  <dl class="row">
+    <dt class="col-1">注文履歴</dt>
+    <dd class="col-2"><%= link_to '一覧を見る', orders_path(@customer), class: 'btn btn-primary btn-sm' %></dd>
+  </dl>
 </div>

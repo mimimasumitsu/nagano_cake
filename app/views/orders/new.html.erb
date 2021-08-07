@@ -1,13 +1,57 @@
-<h2>注文情報入力</h2>
-<%= form_with model: @order, local: true do |f| %>
-  <div>
-    <%= f.label :payment_method, '支払方法'%>
-    <label>
-      <%= f.radio_button :payment_method, Order.payment_method.keys.to_a, {} %>
-    </label>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <h4 class="mb-4 text-center bg-light w-75">注文情報入力</h4>
+    </div>
   </div>
-  <div>
-    <%#= f.label 'お届け先'%>
-  </div>
-  <%= f.submit '確認画面へ進む' %>
-<% end %>
+  <%= form_with model: @order, url: orders_confirm_path, local: true do |f| %>
+    <div class="row form-group">
+      <div class="radio">
+        <%= f.label :payment_method, '支払方法'%>
+      </div>
+      <label class="button">
+        <%= f.radio_button :payment_method, :credit_card %>クレジットカード
+      </label>
+      <label class="button">
+        <%= f.radio_button :payment_method, :bank_transfer %>銀行振込
+      </label>
+    </div>
+    <div class="row form-group">
+      <div class="radio">
+        <%= f.label :delivery_address, 'お届け先'%>
+      </div>
+      <label class="button">
+        <%= f.radio_button :delivery_address, 1, checked: 'checked' %>ご自身の住所
+        <div>
+            〒<%= current_customer.postal_code %>
+            <%= current_customer.address %><br>
+            <%= current_customer.full_name %>
+        </div>
+      </label>
+      <label class="button">
+        <%= f.radio_button :delivery_address, 2 %>登録済住所から選択
+        <div>
+          <%= f.select(:address_id, current_customer.addresses.map { |address| [address.registered_address, address.id] }) %>
+        </div>
+      </label>
+      <label class="button">
+        <%= f.radio_button :delivery_address, 3 %>新しいお届け先
+        <dl class="row">
+          <dt class="col-5"><%= f.label :postal_code, '郵便番号(ハイフンなし)' %></dt>
+          <dd class="col-7"><%= f.text_field :postal_code %></dd>
+        </dl>
+        <dl class="row">
+          <dt class="col-5"><%= f.label :address, '住所' %></dt>
+          <dd class="col-7"><%= f.text_field :address, size: 60 %></dd>
+        </dl class="row">
+        <dl class="row">
+          <dt class="col-5"><%= f.label :name, '宛名' %></dt>
+          <dd class="col-7"><%= f.text_field :name %></dd>
+        </dl>
+      </label>
+    </div>
+    <div class="row justify-content-center col-8">
+      <%= f.submit '確認画面へ進む', class: "btn btn-primary btn-sm" %>
+    </div>
+  <% end %>
+</div>

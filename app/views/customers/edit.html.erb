@@ -1,33 +1,39 @@
-<h2>会員情報編集</h2>
-<%= form_with model: @customer, url: customers_edit_path, local: true do |f| %>
-  <div>
-    <%= f.label [:first_name, :last_name], '氏名' %>
-    <%= f.text_field :first_name %>
-    <%= f.text_field :last_name %>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <h4 class="mb-4 text-center bg-light w-75">会員情報編集</h4>
+    </div>
   </div>
-  <div>
-    <%= f.label [:first_name_kana, :last_name_kana], 'カナ' %>
-    <%= f.text_field :first_name_kana %>
-    <%= f.text_field :last_name_kana %>
-  </div>
-  <div>
-    <%= f.label :postal_code, '郵便番号' %>
-    <%= f.text_field :postal_code %>
-  </div>
-  <div>
-    <%= f.label :address, '住所' %>
-    <%= f.text_field :address %>
-  </div>
-  <div>
-    <%= f.label :telephone_number, '電話番号' %>
-    <%= f.text_field :telephone_number %>
-  </div>
-  <div>
-    <%= f.label :email, 'メールアドレス' %>
-    <%= f.text_field :email %>
-  </div>
-  <div>
-    <%= f.submit '編集内容を保存' %>
-    <%= link_to '退会する', customers_confirm_path %>
-  </div>
-<% end %>
+  <%= form_with model: @customer, url: customers_path, local: true do |f| %>
+    <dl class="row">
+      <dt class="col-2"><%= f.label [:first_name, :last_name], '氏名' %></dt>
+      <dd class="col-2"><%= f.text_field :first_name %></dd>
+      <dd class="col-2"><%= f.text_field :last_name %></dd>
+    </dl>
+    <dl class="row">
+      <dt class="col-2"><%= f.label [:first_name_kana, :last_name_kana], 'カナ' %></dt>
+      <dd class="col-2"><%= f.text_field :first_name_kana %></dd>
+      <dd class="col-2"><%= f.text_field :last_name_kana %></dd>
+    </dl>
+    <dl class="row">
+      <dt class="col-2"><%= f.label :postal_code, '郵便番号' %></dt>
+      <dd class="col-2"><%= f.text_field :postal_code %></dd>
+    </dl>
+    <dl class="row">
+      <dt class="col-2"><%= f.label :address, '住所' %></dt>
+      <dd class="col-2"><%= f.text_field :address, size: 60 %></dd>
+    </dl>
+    <dl class="row">
+      <dt class="col-2"><%= f.label :telephone_number, '電話番号' %></dt>
+      <dd class="col-2"><%= f.text_field :telephone_number %></dd>
+    </dl>
+    <dl class="row">
+      <dt class="col-2"><%= f.label :email, 'メールアドレス' %></dt>
+      <dd class="col-2"><%= f.text_field :email %></dd>
+    </dl>
+    <div class="row justify-content-center col-7">
+      <%= f.submit '編集内容を保存', class: "btn btn-success btn-sm w-25 m-3" %>
+      <%= link_to '退会する', customers_confirm_path, class: 'btn btn-danger btn-sm m-3' %>
+    </div>
+  <% end %>
+</div>

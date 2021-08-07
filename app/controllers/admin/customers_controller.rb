@@ -1,19 +1,24 @@
 class Admin::CustomersController < ApplicationController
 
   def index
-    @customers = Customer.all
+    @customers = Customer.with_deleted
   end
 
   def show
-    @customer = Customer.find(params[:id])
+    @customer = Customer.with_deleted.find(params[:id])
   end
 
   def edit
-    @customer = Customer.find(params[:id])
+    @customer = Customer.with_deleted.find(params[:id])
   end
 
   def update
-    @customer = Customer.find(params[:id])
+    @customer = Customer.with_deleted.find(params[:id])
+    if params[:customer][:deleted_at] == "nil"
+      @customer.restore
+    else
+      @customer.destroy
+    end
     if @customer.update(customer_params)
       redirect_to admin_customer_path(@customer)
     else

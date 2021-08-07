@@ -22,8 +22,9 @@ class CustomersController < ApplicationController
 
   def cancel
     @customer = current_customer
-    @customer.update(is_active: false)
-    reset_session
+    @customer.destroy
+    #@customer.update(is_active: false)
+    #reset_session
     redirect_to root_path
   end
 

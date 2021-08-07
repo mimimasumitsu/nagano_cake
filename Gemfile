@@ -71,3 +71,8 @@ gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
 
 gem 'pry-byebug'
+
+gem 'rails-i18n'
+gem 'enum_help'
+
+gem 'paranoia'

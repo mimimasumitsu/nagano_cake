@@ -7,6 +7,8 @@ class CartItemsController < ApplicationController
 
   def update
     @cart_item = CartItem.find(params[:id])
+    @cart_item.update(item_params)
+    redirect_to request.referer
   end
 
   def destroy
@@ -32,6 +34,10 @@ class CartItemsController < ApplicationController
 
   def cart_item_params
     params.require(:cart_item).permit(:item_id, :amount)
+  end
+
+  def item_params
+    params.require(:cart_item).permit(:amount)
   end
 
 end
